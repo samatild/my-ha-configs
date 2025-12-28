@@ -1,0 +1,32 @@
+type: custom:button-card
+entity: climate.example_ac
+name: Example Room
+icon: mdi:air-conditioner
+show_state: false
+show_label: true
+
+tap_action:
+  action: more-info
+
+label: A/C
+
+styles:
+  card:
+    - padding: 12px
+    - height: 90px
+  name:
+    - font-size: 14px
+  label:
+    - font-size: 12px
+    - color: "#6b7280"
+  icon:
+    - width: 36px
+    - color: >
+        [[[
+          const a = entity.attributes.hvac_action;
+          const m = entity.state;
+          if (m === 'off') return '#9ca3af';
+          if (a === 'heating') return '#f59e0b';
+          if (a === 'cooling') return '#3b82f6';
+          return '#10b981';
+        ]]]
