@@ -1,6 +1,10 @@
-# My home assistant configs 
-
-A repository holding some of my Home Assistant configurations.
+<div align="center">
+  <img src="home-assistant-logo.svg" alt="Home Assistant Logo" width="120" height="120">
+  
+  # My Home Assistant Configs
+  
+  A repository holding some of my Home Assistant configurations.
+</div>
 
 > [!NOTE]
 > This repository is a constant work in progress (WIP). Configurations and structures may change as I refine my setup.
