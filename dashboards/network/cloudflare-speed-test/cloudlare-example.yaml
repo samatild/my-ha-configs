@@ -1,0 +1,112 @@
+# -----------------------------
+# Latency & Jitter (Statistics)
+# -----------------------------
+type: grid
+column_span: 4
+cards:
+  - type: statistics-graph
+    title: Latency & Jitter (Max)
+    period: hour
+    days_to_show: 3
+    stat_types:
+      - max
+    entities:
+      - sensor.cloudflare_speed_test_latency
+      - sensor.cloudflare_speed_test_jitter
+    grid_options:
+      columns: 48
+      rows: 4
+
+# -----------------------------
+# Download Speed Test
+# -----------------------------
+type: custom:apexcharts-card
+header:
+  title: Download Speed Test (Max per Hour)
+  show: true
+graph_span: 12h
+now:
+  show: true
+series:
+  - entity: sensor.cloudflare_speed_test_100kb_down
+    name: 100KB
+    color: "#8e24aa"
+  - entity: sensor.cloudflare_speed_test_1mb_down
+    name: 1MB
+    color: "#1e90ff"
+  - entity: sensor.cloudflare_speed_test_10mb_down
+    name: 10MB
+    color: "#39c67a"
+  - entity: sensor.cloudflare_speed_test_25mb_down
+    name: 25MB
+    color: "#f9a825"
+  - entity: sensor.cloudflare_speed_test_90th_percentile_down
+    name: 90th Percentile
+    color: "#e53935"
+
+apex_config:
+  chart:
+    height: 350
+    toolbar:
+      show: true
+  stroke:
+    curve: smooth
+    width: 2
+  yaxis:
+    title:
+      text: Download Speed (Mbps)
+    decimalsInFloat: 2
+  xaxis:
+    type: datetime
+    labels:
+      datetimeFormatter:
+        hour: HH:mm
+  tooltip:
+    x:
+      format: dd MMM HH:mm
+  legend:
+    position: top
+
+# -----------------------------
+# Upload Speed Test
+# -----------------------------
+type: custom:apexcharts-card
+header:
+  title: Upload Speed Test (Max per Hour)
+  show: true
+graph_span: 24h
+now:
+  show: true
+series:
+  - entity: sensor.cloudflare_speed_test_1mb_up
+    name: 1MB
+    color: "#1e90ff"
+  - entity: sensor.cloudflare_speed_test_10mb_up
+    name: 10MB
+    color: "#39c67a"
+  - entity: sensor.cloudflare_speed_test_90th_percentile_up
+    name: 90th Percentile
+    color: "#e53935"
+
+apex_config:
+  chart:
+    height: 350
+    toolbar:
+      show: true
+  stroke:
+    curve: smooth
+    width: 2
+  yaxis:
+    title:
+      text: Upload Speed (Mbps)
+    decimalsInFloat: 2
+  xaxis:
+    type: datetime
+    labels:
+      datetimeFormatter:
+        hour: HH:mm
+  tooltip:
+    x:
+      format: dd MMM HH:mm
+  legend:
+    position: top
