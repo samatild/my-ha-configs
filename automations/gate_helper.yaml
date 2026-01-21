@@ -1,1 +1,19 @@
-placeholder
+cover:
+  - platform: template
+    covers:
+      portao_garagem:
+        friendly_name: "Portão Garagem"
+        icon_template: mdi:gate
+
+        value_template: >
+          {{ is_state('binary_sensor.portao_garagem', 'on') }}
+
+        open_cover:
+          service: input_boolean.turn_on
+          target:
+            entity_id: input_boolean.trigger_portao
+
+        close_cover:
+          service: input_boolean.turn_on
+          target:
+            entity_id: input_boolean.trigger_portao
